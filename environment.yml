@@ -21,7 +21,7 @@ dependencies:
   - pip:
     - mysqlclient==2.0.3
     - pillow==8.3.1
-    - vs2015_runtime=14.27.29016
-    - vc=14.2
-    - wincertstore=0.2
+    - vs2015_runtime==14.27.29016
+    - vc==14.2
+    - wincertstore==0.2
 prefix: /home/ubuntu/anaconda3/envs/landing_page
