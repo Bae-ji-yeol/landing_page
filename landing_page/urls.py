@@ -19,6 +19,6 @@ from translate import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('translate/', include('translate.urls')),
+    path('', include('translate.urls')),
 
 ]
