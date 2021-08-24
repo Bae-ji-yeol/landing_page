@@ -4,68 +4,132 @@
 {% block content %}
 <div id="main">
 
-        <div class="cover-container   flex-column">
-            <img class="m-img" src="{% static '1.png' %}">
-        </div>
+<div class="container-fluid">
+    <div class="row ">
+        <div class=" part-1 snap-st " style="padding: 0;">
+            <div class="slogan-big ">
+                <h1> <strong>취향</strong>을 채워줄</h1>
+                <h1> <strong>게임</strong>이 온다</h1>
+                <h4>늦기전에 지금바로 등록 </h4>
+                <h4>너만 5면 5인팟 </h4>
+            </div>
+
+    </div>
+    </div>
+</div>
 
     <div class="container marketing">
-        <form class="p-4 p-md-5 border rounded-3 bg-light shadow part-2 snap-cen">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="" placeholder="name@example.com">
-                <label for="floatingInput">이메일 주소</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="" class="form-control" id="" placeholder="Password">
-                <label for="floatingPassword">게임 타이틀</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="file">
-            </div>
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="">
-                    <small>개인정보 수집 및 이용 동의
-                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#privacy">자세히보기</button> </small>
-                    <br>
-                    <input type="checkbox" value="">
-                    <small>이벤트 등 프로모션 알림 수신 동의
-                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#event">자세히보기</button></small>
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">투고하기</button>
-            <hr class="my-4">
-            <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
-        </form>
-
-        <hr class="divider ">
-
-        <div class="part-3 snap-cen">
-            <div class="row ">
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-                    <h2>Heading</h2>
-                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4 " >
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-                    <h2>Heading</h2>
-                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-                    <h2>Heading</h2>
-                    <p>And lastly this, the third column of representative placeholder content.</p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
+        <div class="part-2 snap-st">
+            <form class="p-4 p-md-4 border rounded-3 bg-light shadow  form-email" action="{% url 'translate:create' author.id  %} " method="post">
+                {% csrf_token %}
+                <div class="form-floating mb-3"> <!-- 입력 폼 -->
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="" class="form-control" id="" placeholder="Password">
+                    <label for="floatingPassword">게임 타이틀</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="file">
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="">
+                        <small>개인정보 수집 및 이용 동의
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#privacy">자세히보기</button> </small>
+                        <br>
+                        <input type="checkbox" value="">
+                        <small>이벤트 등 프로모션 알림 수신 동의
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#event">자세히보기</button></small>
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">투고하기</button>
+                <hr class="my-4">
+                <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+            </form>
         </div>
 
         <hr class="divider">
 
-        <div class="snap-st">
-        <div class="row featurette ">
+        <div class="part-3 snap-st">
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators" style="position: relative; margin-bottom: 3rem">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="container">
+
+                                <div class="row">
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                                </div><!-- /.col-lg-4 -->
+                                <div class="col-lg-6">
+                                    <svg class="bd-placeholder-img rounded-circle" width="170" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 170x170" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">170x170</text></svg>
+                                    <h2>Heading</h2>
+                                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
+
+                        </div>
+                    </div>
+<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="part-4 snap-st">
+            <hr class="divider" style="margin: 5rem 0;">
+        <div class="row featurette  ">
             <div class="col-md-7">
                 <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
                 <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
@@ -75,7 +139,7 @@
             </div>
         </div>
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider snap-st">
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
@@ -88,7 +152,7 @@
           </div>
         </div>
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider ">
 
         <div class="row featurette">
           <div class="col-md-7">
@@ -110,7 +174,7 @@
 
 
   <!-- FOOTER -->
-  <footer class="container">
+  <footer class="container snap-end">
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>

@@ -1,9 +1,16 @@
 from django.db import models
 
 
-class Translate(models.Model):
-    email = models.EmailField(max_length=100)
+class Author(models.Model):
+    email = models.EmailField(max_length=200)
+
+    def __str__(self):
+        return self.email
+
+
+class Data(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     file = models.FileField()
-    posted_date = models.DateTimeField(auto_now_add=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
