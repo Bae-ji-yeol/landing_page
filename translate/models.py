@@ -1,16 +1,13 @@
 from django.db import models
+from datetime  import datetime
 
 
 class Author(models.Model):
-    email = models.EmailField(max_length=200)
-
-    def __str__(self):
-        return self.email
-
-
-class Data(models.Model):
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=40)
     title = models.CharField(max_length=100)
-    file = models.FileField()
-    create_date = models.DateTimeField(auto_now_add=True)
+    file = models.FileField(null=True)
+    check1 = models.BooleanField(blank=False)
+    check2 = models.BooleanField(blank=False)
+    create_date = models.DateTimeField()
+
 

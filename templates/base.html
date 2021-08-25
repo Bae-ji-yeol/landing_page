@@ -38,6 +38,7 @@
         }
       }
     </style>
+
 </head>
 <body>
 
@@ -48,4 +49,23 @@
 {% endblock %}
 
 </body>
+
+
+    <script type="text/javascript">
+    function CheckForm(Join){
+
+        var chk1=document.create_form.check1.checked;
+        var chk2=document.create_form.check2.checked;
+
+        if(!chk1){
+            alert('개인정보 수집 및 이용에 동의해 주세요');
+            return false;
+        }
+        if(!chk2) {
+            alert('이벤트 등 프로모션 알림 수신에 동의해 주세요');
+            return false;
+        }
+
+    }
+    </script>
 </html>

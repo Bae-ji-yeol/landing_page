@@ -1,27 +1,29 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Author, Data
+from django.shortcuts import render, redirect, resolve_url
+from .models import Author
 from .forms import AuthorForm
 from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 
 
-def index(request):
-    author = get_object_or_404(Author)
-    return render (request,'landing_page.html' , {'author':author})
+def create(request):
 
-
-def create(request, author_id ):
-    author = get_object_or_404(Author, pk=author_id)
     if request.method == "POST":
-        form = AuthorForm(request.POST)
-
+        form = AuthorForm(request.POST, request.FILES)
+        print('1')
         if form.is_valid():
+            print('3')
             author = form.save(commit=False)
+            author.create_date = timezone.now()
+            author.save()
+            print('3')
 
-            return HttpResponseRedirect('')
+            return redirect('translate:create')
+        else:
+            print('5')
 
     else:
         form = AuthorForm()
+        print('4')
+    print('2')
+    return render(request, 'landing_page.html', {'form': form})
 
-    context = {'form': form, 'author':author}
-    return redirect('translate:index')

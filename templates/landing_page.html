@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
     <div class="row ">
-        <div class=" part-1 snap-st " style="padding: 0;">
+        <div id="part-1" class=" part-1 snap-st " style="padding: 0;">
             <div class="slogan-big ">
                 <h1> <strong>취향</strong>을 채워줄</h1>
                 <h1> <strong>게임</strong>이 온다</h1>
@@ -19,32 +19,38 @@
 </div>
 
     <div class="container marketing">
-        <div class="part-2 snap-st">
-            <form class="p-4 p-md-4 border rounded-3 bg-light shadow  form-email" action="{% url 'translate:create' author.id  %} " method="post">
+        <div id="part-2" class="part-2 snap-st">
+            <form id="part-2_form" name="create_form" class="p-4 p-md-4 border rounded-3 bg-light shadow" onSubmit="return CheckForm(this)" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
-                <div class="form-floating mb-3"> <!-- 입력 폼 -->
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="" class="form-control" id="" placeholder="Password">
-                    <label for="floatingPassword">게임 타이틀</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="file">
-                </div>
+                    <input type="text" class="form-control" name="email" id="email"value="{{ form.email.value|default_if_none:'' }}" placeholder="이메일 주소">
+                    <input type="text" class="form-control" name="title" id="title"value="{{ form.title.value|default_if_none:'' }}" placeholder="게임 타이틀">
+                    <input type="file" name="file" required="" id="id_file">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        {% for field in form %}
+                            <div class="error-meg">
+                        {% if field.errors %}
+                        <strong>{{ field.label }}</strong>은 {{ field.errors }}
+                        {% endif %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                {% endif %}
+
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" value="">
+                        <input type="checkbox" name="check1" id="id_check1">
                         <small>개인정보 수집 및 이용 동의
-                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#privacy">자세히보기</button> </small>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#privacy">자세히보기</button></small>
                         <br>
-                        <input type="checkbox" value="">
+                        <input type="checkbox" name="check2" id="id_check2">
                         <small>이벤트 등 프로모션 알림 수신 동의
-                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#event">자세히보기</button></small>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill smbtn" data-bs-toggle="modal" data-bs-target="#privacy">자세히보기</button></small>
                     </label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">투고하기</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit"  onclick="location.href='#part-2_form'" >투고하기</button>
                 <hr class="my-4">
                 <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
             </form>
@@ -175,7 +181,7 @@
 
   <!-- FOOTER -->
   <footer class="container snap-end">
-    <p class="float-end"><a href="#">Back to top</a></p>
+    <p class="float-end"><a href="#part-1">Back to top</a></p>
     <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 </div>
