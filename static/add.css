@@ -157,8 +157,16 @@
     margin-right: 5rem;
 }
  .carousel-inner svg{
-    height: calc(80px + 10vw); width: calc(80px + 10vw);
+    height: 180px;
+     width: 180px;
  }
+
+ @media (max-width: 891px){
+ .carousel-inner svg{
+    height: 120px;
+     width: 120px;
+ }
+
 
  .carousel-control-prev{
      justify-content: flex-start;
